@@ -125,19 +125,16 @@
                             <option value="78">Wood
                             <option value="79">Wray
                             <option value="80">Zellweger
-
-                        </select> 
+                        </select>  
+                        
                         <select id="DropDownList4" name="ratingSearch" >
                             <option value="">Select a Rating...
                             <option value="1">G 
                             <option value="2">PG
                             <option value="3">PG-13
                             <option value="4">R
-                            <option value="5">NC-17
-                   
-                        </select> 
-  
-
+                            <option value="5">NC-17                   
+                        </select>   
                         <input type="submit" value="Search" name="search_btn">  
                     </td>
                 </tr>
