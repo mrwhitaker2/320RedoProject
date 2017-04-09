@@ -43,12 +43,20 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("<!DOCTYPE html>\r\n");
       out.write("\r\n");
+<<<<<<< HEAD
+=======
+      out.write("\r\n");
+      out.write("\r\n");
+>>>>>>> 84e5477870e690eb9fcf6da9bab353b0d6ef7c88
       out.write("<head>\r\n");
       out.write("    <title>Login Page!</title>\r\n");
       out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"login.css\">\r\n");
       out.write("    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\r\n");
       out.write("    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js\"></script>\r\n");
+<<<<<<< HEAD
       out.write("\r\n");
+=======
+>>>>>>> 84e5477870e690eb9fcf6da9bab353b0d6ef7c88
       out.write("    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js\"></script>\r\n");
       out.write("\r\n");
       out.write("</head>\r\n");
@@ -61,7 +69,12 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        ;\r\n");
       out.write("        function signIn() {\r\n");
       out.write("            $('form').animate({height: \"toggle\", opacity: \"toggle\"}, \"slow\");\r\n");
+<<<<<<< HEAD
       out.write("        };\r\n");
+=======
+      out.write("        }\r\n");
+      out.write("        ;\r\n");
+>>>>>>> 84e5477870e690eb9fcf6da9bab353b0d6ef7c88
       out.write("    </script>\r\n");
       out.write("\r\n");
       out.write("    <div class=\"form\">\r\n");
@@ -77,7 +90,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </form>\r\n");
       out.write("\r\n");
       out.write("        <form class=\"login-form\">\r\n");
+<<<<<<< HEAD
       out.write("            <input type=\"email\" name = \"email\" autocomplete=\"on\" placeholder=\"email\" required/>\r\n");
+=======
+      out.write("            <input type=\"email\" name = \"email\" autocomplete=\"on\" placeholder=\"email\" required />\r\n");
+>>>>>>> 84e5477870e690eb9fcf6da9bab353b0d6ef7c88
       out.write("            <input type=\"password\" name =\"password\" placeholder=\"password\" minlength=\"8\" pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\" title=\"Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters\" required/>\r\n");
       out.write("            <button>login</button>\r\n");
       out.write("            <p class=\"message\">Not registered? <a href=\"#\" onclick=\"register()\">Create an account</a></p>\r\n");
