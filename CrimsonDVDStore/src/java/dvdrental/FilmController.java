@@ -123,6 +123,7 @@ public class FilmController implements Serializable
         return "index";
     }
 
+    /*
     public String getLanguage()
     {
         int langID = current.getLanguageByLanguageId().getLanguageId().intValue();
@@ -150,5 +151,5 @@ public class FilmController implements Serializable
         Category category = helper.getCategoryByID(current.getFilmId());
         return category.getName();
     }
-
+    */
 }
