@@ -127,44 +127,16 @@
                             <option value="80">Zellweger
 
                         </select> 
-                        <select id="DropDownList2" name="genreSearch" >
-                            <option value="">Select a Genre...
-                            <option value="1">Action 
-                            <option value="2">Animation
-                            <option value="3">Children
-                            <option value="4">Classics
-                            <option value="5">Comedy
-                            <option value="6">Documentary
-                            <option value="7">Drama
-                            <option value="8">Family
-                            <option value="9">Foreign
-                            <option value="10">Games
-                            <option value="11">Horror
-                            <option value="12">Music
-                            <option value="13">New
-                            <option value="14">Sci-Fi
-                            <option value="15">Sports
-                            <option value="16">Travel
+                        <select id="DropDownList4" name="ratingSearch" >
+                            <option value="">Select a Rating...
+                            <option value="1">G 
+                            <option value="2">PG
+                            <option value="3">PG-13
+                            <option value="4">R
+                            <option value="5">NC-17
+                   
                         </select> 
-                        <select id="DropDownList2" name="genreSearch" >
-                            <option value="">Select a Genre...
-                            <option value="1">Action 
-                            <option value="2">Animation
-                            <option value="3">Children
-                            <option value="4">Classics
-                            <option value="5">Comedy
-                            <option value="6">Documentary
-                            <option value="7">Drama
-                            <option value="8">Family
-                            <option value="9">Foreign
-                            <option value="10">Games
-                            <option value="11">Horror
-                            <option value="12">Music
-                            <option value="13">New
-                            <option value="14">Sci-Fi
-                            <option value="15">Sports
-                            <option value="16">Travel
-                        </select> 
+  
 
                         <input type="submit" value="Search" name="search_btn">  
                     </td>
