@@ -28,24 +28,24 @@
             <input type="radio" name="store" value="<c:out value="${customer.store}" />" checked>
             Store 1
             <input type="radio" name="store" value="<c:out value="${customer.store}" />">Store 2
-            <input type="text" name="fistName" placeholder="First Name" 
-                   value="<c:out value="${customer.firstName}" />" required/>
-            <input type="text" name="lastName" placeholder="Last Name" 
-                   value="<c:out value="${customer.lastName}" />" required/>
-            <input type="email" name="email" placeholder="email address" 
-                   value="<c:out value="${customer.email}" />"required/>
+            <input type="text" name="username" placeholder="Username" 
+                   value="<c:out value="${customer.username}" />" required/>
             <input type="password" name = "password" placeholder="password" minlength="8" 
                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                    title="Must contain at least one number and one uppercase and lowercase letter, 
                    and at least 8 or more characters" value="<c:out value="${customer.password}" />"
                    required/>
-            <button>create</button>
+            <input type="email" name="email" placeholder="Email" 
+                   value="<c:out value="${customer.email}" />"required/>
+            <input type="text" name="moviePref" placeholder="Movie Preference" 
+                   value="<c:out value="${customer.customerPref}" />"required/>
+            <button href="ProductController?action=insert">create</button>
             <p class="message">Already registered? <a href="#" onclick="signIn()">Sign In</a></p>
         </form>
 
         <form class="login-form">
-            <input type="email" name = "email" autocomplete="on" placeholder="email" 
-                   value="<c:out value="${customer.email}" />" required />
+            <input type="text" name = "username" autocomplete="on" placeholder="Username" 
+                   value="<c:out value="${customer.username}" />" required />
             <input type="password" name ="password" placeholder="password" minlength="8" 
                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                    title="Must contain at least one number and one uppercase and lowercase letter, 
