@@ -9,6 +9,9 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -63,10 +66,10 @@ public class FilmController extends HttpServlet {
             forward = INSERT_OR_EDIT;
             String username = request.getParameter("username");
             Customer cust = dao.getCustomerByUsername(username);
-            request.setAttribute("product", cust);
+            request.setAttribute("customer", cust);
         } else if (action.equalsIgnoreCase("listCustomer")) {
             forward = LIST_FILM;
-            request.setAttribute("products", dao.getAllCustomers());
+            request.setAttribute("customers", dao.getAllCustomers());
         } else {
             forward = INSERT_OR_EDIT;
         }
@@ -77,100 +80,16 @@ public class FilmController extends HttpServlet {
         view.forward(request, response);
     }
 
-    public FilmController(int startId, int endId) {
-        helper = new FilmHelper();
-        this.startId = startId;
-        this.endId = endId;
-    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Customer cust = new Customer();
+        cust.setUsername(request.getParameter("customerId"));
+        cust.setPassword(request.getParameter("productId"));
+        cust.setCustomerPref(request.getParameter("quality"));
+        cust.setPayment(request.getParameter("payment"));
+        cust.setEmail(request.getParameter("shippingCost"));
 
-    public Film getSelected() {
-        if (current == null) {
-            current = new Film();
-            selectedItemIndex = -1;
-        }
-        return current;
+        RequestDispatcher view = request.getRequestDispatcher(LIST_FILM);
+        request.setAttribute("customers", dao.getAllCustomers());
+        view.forward(request, response);
     }
-
-    public DataModel getFilmTitles() {
-        if (filmTitles == null) {
-            filmTitles = new ListDataModel(helper.getFilmTitles(startId, endId));
-        }
-        return filmTitles;
-    }
-
-    void recreateModel() {
-        filmTitles = null;
-    }
-
-    public boolean isHasNextPage() {
-        if (endId + pageSize <= recordCount) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isHasPreviousPage() {
-        if (startId - pageSize > 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public String next() {
-        startId = endId + 1;
-        endId = endId + pageSize;
-        recreateModel();
-        return "index";
-    }
-
-    public String previous() {
-        startId = startId - pageSize;
-        endId = endId - pageSize;
-        recreateModel();
-        return "index";
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public String prepareView() {
-        current = (Film) getFilmTitles().getRowData();
-        return "browse";
-    }
-
-    public String prepareList() {
-        recreateModel();
-        return "index";
-    }
-
-    /*
-    public String getLanguage()
-    {
-        int langID = current.getLanguageByLanguageId().getLanguageId().intValue();
-        String language = helper.getLangByID(langID);
-        return language;
-    }
-
-    public String getActors()
-    {
-        List actors = helper.getActorsByID(current.getFilmId());
-        StringBuffer totalCast = new StringBuffer();
-        for (int i = 0; i < actors.size(); i++)
-        {
-            Actor actor = (Actor) actors.get(i);
-            totalCast.append(actor.getFirstName());
-            totalCast.append(" ");
-            totalCast.append(actor.getLastName());
-            totalCast.append("  ");
-        }
-        return totalCast.toString();
-    }
-
-    public String getCategory()
-    {
-        Category category = helper.getCategoryByID(current.getFilmId());
-        return category.getName();
-    }
-     */
 }

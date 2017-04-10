@@ -12,5 +12,7 @@
     </head>
     <body>
         <jsp:forward page="/FilmController?action=response" />
+        <a href="login.jsp">login</a>
+        <a href="Browse.jsp">browse</a>
     </body>
 </html>

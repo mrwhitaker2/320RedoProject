@@ -81,7 +81,8 @@ public class FilmDAO {
             e.printStackTrace();
         }
     }
-        public Customer getCustomerByUsername(String username){
+
+    public Customer getCustomerByUsername(String username) {
         Customer cust = new Customer();
         try {
             PreparedStatement preparedStatement = connection.
@@ -101,6 +102,27 @@ public class FilmDAO {
         }
 
         return cust;
+    }
+
+    public static boolean validate(Customer bean) {
+        boolean status = false;
+        try {
+            Connection con = DBConnection.getConnection();
+
+            PreparedStatement ps = con.prepareStatement(
+                    "select * from CUSTOMERNOBS where username=? and password=?");
+
+            ps.setString(1, bean.getUsername());
+            ps.setString(2, bean.getPassword());
+
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+
+        } catch (Exception e) {
+        }
+
+        return status;
+
     }
     /*
     public List<Film> getProductsByCategory(String )

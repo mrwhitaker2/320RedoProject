@@ -11,6 +11,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  static {
+    _jspx_dependants = new java.util.ArrayList<String>(1);
+    _jspx_dependants.add("/index.jsp");
+  }
+
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_out_value_nobody;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -51,11 +56,32 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("<!DOCTYPE html>\r\n");
+      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html14/loose/dtd\">\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=EUC-KR\">\r\n");
+      out.write("        <title>Start Page</title>\r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body>\r\n");
+      out.write("        ");
+      if (true) {
+        _jspx_page_context.forward("/FilmController?action=response");
+        return;
+      }
+      out.write("\r\n");
+      out.write("        <a href=\"login.jsp\">login</a>\r\n");
+      out.write("        <a href=\"Browse.jsp\">browse</a>\r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
       out.write("\r\n");
       out.write("<head>\r\n");
+      out.write("    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=EUC-KR\">\r\n");
       out.write("    <title>Login Page!</title>\r\n");
       out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"login.css\">\r\n");
       out.write("    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\r\n");
@@ -76,8 +102,21 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        ;\r\n");
       out.write("    </script>\r\n");
       out.write("\r\n");
+      out.write("   ");
+
+        String browse_msg = (String) request.getAttribute("browse_msg");
+        if (browse_msg != null) {
+            out.print(browse_msg);
+        }
+        String login_msg = (String) request.getAttribute("login_msg");
+        if (login_msg != null) {
+            out.print(login_msg);
+        }
+    
+      out.write("    \r\n");
+      out.write("\r\n");
       out.write("    <div class=\"form\">\r\n");
-      out.write("        <form class=\"register-form\">\r\n");
+      out.write("        <form class=\"register-form\" method=\"POST\" action='FilmController'>\r\n");
       out.write("            <input type=\"radio\" name=\"store\" value=\"");
       if (_jspx_meth_c_out_0(_jspx_page_context))
         return;
@@ -87,35 +126,35 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_out_1(_jspx_page_context))
         return;
       out.write("\">Store 2\r\n");
-      out.write("            <input type=\"text\" name=\"fistName\" placeholder=\"First Name\" \r\n");
+      out.write("            <input type=\"text\" name=\"username\" placeholder=\"Username\" \r\n");
       out.write("                   value=\"");
       if (_jspx_meth_c_out_2(_jspx_page_context))
         return;
       out.write("\" required/>\r\n");
-      out.write("            <input type=\"text\" name=\"lastName\" placeholder=\"Last Name\" \r\n");
-      out.write("                   value=\"");
-      if (_jspx_meth_c_out_3(_jspx_page_context))
-        return;
-      out.write("\" required/>\r\n");
-      out.write("            <input type=\"email\" name=\"email\" placeholder=\"email address\" \r\n");
-      out.write("                   value=\"");
-      if (_jspx_meth_c_out_4(_jspx_page_context))
-        return;
-      out.write("\"required/>\r\n");
       out.write("            <input type=\"password\" name = \"password\" placeholder=\"password\" minlength=\"8\" \r\n");
       out.write("                   pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\" \r\n");
       out.write("                   title=\"Must contain at least one number and one uppercase and lowercase letter, \r\n");
       out.write("                   and at least 8 or more characters\" value=\"");
-      if (_jspx_meth_c_out_5(_jspx_page_context))
+      if (_jspx_meth_c_out_3(_jspx_page_context))
         return;
       out.write("\"\r\n");
       out.write("                   required/>\r\n");
-      out.write("            <button>create</button>\r\n");
+      out.write("            <input type=\"email\" name=\"email\" placeholder=\"Email\" \r\n");
+      out.write("                   value=\"");
+      if (_jspx_meth_c_out_4(_jspx_page_context))
+        return;
+      out.write("\"required/>\r\n");
+      out.write("            <input type=\"text\" name=\"moviePref\" placeholder=\"Movie Preference\" \r\n");
+      out.write("                   value=\"");
+      if (_jspx_meth_c_out_5(_jspx_page_context))
+        return;
+      out.write("\"required/>\r\n");
+      out.write("            <button type=\"submit\">create</button>\r\n");
       out.write("            <p class=\"message\">Already registered? <a href=\"#\" onclick=\"signIn()\">Sign In</a></p>\r\n");
       out.write("        </form>\r\n");
       out.write("\r\n");
-      out.write("        <form class=\"login-form\">\r\n");
-      out.write("            <input type=\"email\" name = \"email\" autocomplete=\"on\" placeholder=\"email\" \r\n");
+      out.write("        <form class=\"login-form\" method=\"POST\" action='loginprocess.jsp'>\r\n");
+      out.write("            <input type=\"text\" name = \"username\" autocomplete=\"on\" placeholder=\"Username\" \r\n");
       out.write("                   value=\"");
       if (_jspx_meth_c_out_6(_jspx_page_context))
         return;
@@ -128,7 +167,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("\"\r\n");
       out.write("                   required/>\r\n");
-      out.write("            <button>login</button>\r\n");
+      out.write("            <button type=\"submit\">login</button>\r\n");
       out.write("            <p class=\"message\">Not registered? <a href=\"#\" onclick=\"register()\">Create an account</a></p>\r\n");
       out.write("            <p class=\"message\"> Manager or Staff?<a href=\"#\">Click Here</a></p>\r\n");
       out.write("        </form>\r\n");
@@ -193,7 +232,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_2.setPageContext(_jspx_page_context);
     _jspx_th_c_out_2.setParent(null);
-    _jspx_th_c_out_2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${customer.firstName}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${customer.username}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_2 = _jspx_th_c_out_2.doStartTag();
     if (_jspx_th_c_out_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_2);
@@ -211,7 +250,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_3.setPageContext(_jspx_page_context);
     _jspx_th_c_out_3.setParent(null);
-    _jspx_th_c_out_3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${customer.lastName}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${customer.password}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_3 = _jspx_th_c_out_3.doStartTag();
     if (_jspx_th_c_out_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_3);
@@ -247,7 +286,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_5 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_5.setPageContext(_jspx_page_context);
     _jspx_th_c_out_5.setParent(null);
-    _jspx_th_c_out_5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${customer.password}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${customer.customerPref}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_5 = _jspx_th_c_out_5.doStartTag();
     if (_jspx_th_c_out_5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_5);
@@ -265,7 +304,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_6.setPageContext(_jspx_page_context);
     _jspx_th_c_out_6.setParent(null);
-    _jspx_th_c_out_6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${customer.email}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${customer.username}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_6 = _jspx_th_c_out_6.doStartTag();
     if (_jspx_th_c_out_6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_6);
