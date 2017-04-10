@@ -43,6 +43,8 @@
             <p class="message">Already registered? <a href="#" onclick="signIn()">Sign In</a></p>
         </form>
 
+            
+            
         <form class="login-form">
             <input type="text" name = "username" autocomplete="on" placeholder="Username" 
                    value="<c:out value="${customer.username}" />" required />

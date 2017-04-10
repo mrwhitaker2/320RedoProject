@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/willk/Documents/GitHub/320RedoProject/CrimsonDVDStore/src/java/dvdrental/Customer.java</file>
-            <file>file:/C:/Users/willk/Documents/GitHub/320RedoProject/CrimsonDVDStore/web/login.jsp</file>
+            <file>file:/C:/Users/wsullivan16/Documents/GitHub/320RedoProject/CrimsonDVDStore/src/java/dvdrental/Customer.java</file>
+            <file>file:/C:/Users/wsullivan16/Documents/GitHub/320RedoProject/CrimsonDVDStore/src/java/dvdrental/CustomerDao.java</file>
+            <file>file:/C:/Users/wsullivan16/Documents/GitHub/320RedoProject/CrimsonDVDStore/src/java/dvdrental/CustomerController.java</file>
+            <file>file:/C:/Users/wsullivan16/Documents/GitHub/320RedoProject/CrimsonDVDStore/web/login.jsp</file>
+            <file>file:/C:/Users/wsullivan16/Documents/GitHub/320RedoProject/CrimsonDVDStore/src/java/dvdrental/DbConnectionUtil.java</file>
+            <file>file:/C:/Users/wsullivan16/Documents/GitHub/320RedoProject/CrimsonDVDStore/src/java/db.properties</file>
         </group>
     </open-files>
 </project-private>
