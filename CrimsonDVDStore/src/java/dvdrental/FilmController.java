@@ -5,12 +5,18 @@
  */
 package dvdrental;
 
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -18,9 +24,12 @@ import javax.faces.model.ListDataModel;
  */
 @Named(value = "filmController")
 @SessionScoped
-public class FilmController implements Serializable
-{
+public class FilmController extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
+    private static String INSERT_OR_EDIT = "/login.jsp";
+    private static String LIST_FILM = "/Browse.jsp";
+    private FilmDAO dao;
     /**
      * Creates a new instance of FilmController
      */
@@ -34,91 +43,103 @@ public class FilmController implements Serializable
     private Film current;
     private int selectedItemIndex;
 
-    public FilmController()
-    {
-        helper = new FilmHelper();
-        startId = 1;
-        endId = 10;
+    public FilmController() {
+        super();
+        dao = new FilmDAO();
     }
 
-    public FilmController(int startId, int endId)
-    {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String forward = "";
+
+        String action = request.getParameter("action");
+
+        if (action.equalsIgnoreCase("delete")) {
+            String username = request.getParameter("userName");
+            dao.deleteCustomer(username);
+            forward = INSERT_OR_EDIT;
+            request.setAttribute("customer", dao.getAllCustomers());
+        } else if (action.equalsIgnoreCase("edit")) {
+            forward = INSERT_OR_EDIT;
+            String username = request.getParameter("username");
+            Customer cust = dao.getCustomerByUsername(username);
+            request.setAttribute("product", cust);
+        } else if (action.equalsIgnoreCase("listCustomer")) {
+            forward = LIST_FILM;
+            request.setAttribute("products", dao.getAllCustomers());
+        } else {
+            forward = INSERT_OR_EDIT;
+        }
+
+        //fowards it to the specific page
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+
+        view.forward(request, response);
+    }
+
+    public FilmController(int startId, int endId) {
         helper = new FilmHelper();
         this.startId = startId;
         this.endId = endId;
     }
 
-    public Film getSelected()
-    {
-        if (current == null)
-        {
+    public Film getSelected() {
+        if (current == null) {
             current = new Film();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    public DataModel getFilmTitles()
-    {
-        if (filmTitles == null)
-        {
+    public DataModel getFilmTitles() {
+        if (filmTitles == null) {
             filmTitles = new ListDataModel(helper.getFilmTitles(startId, endId));
         }
         return filmTitles;
     }
 
-    void recreateModel()
-    {
+    void recreateModel() {
         filmTitles = null;
     }
 
-    public boolean isHasNextPage()
-    {
-        if (endId + pageSize <= recordCount)
-        {
+    public boolean isHasNextPage() {
+        if (endId + pageSize <= recordCount) {
             return true;
         }
         return false;
     }
 
-    public boolean isHasPreviousPage()
-    {
-        if (startId - pageSize > 0)
-        {
+    public boolean isHasPreviousPage() {
+        if (startId - pageSize > 0) {
             return true;
         }
         return false;
     }
 
-    public String next()
-    {
+    public String next() {
         startId = endId + 1;
         endId = endId + pageSize;
         recreateModel();
         return "index";
     }
 
-    public String previous()
-    {
+    public String previous() {
         startId = startId - pageSize;
         endId = endId - pageSize;
         recreateModel();
         return "index";
     }
 
-    public int getPageSize()
-    {
+    public int getPageSize() {
         return pageSize;
     }
 
-    public String prepareView()
-    {
+    public String prepareView() {
         current = (Film) getFilmTitles().getRowData();
         return "browse";
     }
 
-    public String prepareList()
-    {
+    public String prepareList() {
         recreateModel();
         return "index";
     }
@@ -151,5 +172,5 @@ public class FilmController implements Serializable
         Category category = helper.getCategoryByID(current.getFilmId());
         return category.getName();
     }
-    */
+     */
 }

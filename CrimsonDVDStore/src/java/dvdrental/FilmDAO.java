@@ -25,8 +25,83 @@ public class FilmDAO {
     public FilmDAO() {
         connection = DBConnection.getConnection();
     }
-    
-    
+
+    public List<Customer> getAllCustomers() {
+        List<Customer> customers = new ArrayList<Customer>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM CUSTOMERNOBS");
+            while (rs.next()) {
+                Customer cust = new Customer();
+                cust.setUsername(rs.getString("Username"));
+                cust.setPassword(rs.getString("Password"));
+                cust.setCustomerPref(rs.getString("Customer_Pref"));
+                cust.setPayment(rs.getString("Payment"));
+                cust.setEmail(rs.getString("Email"));
+                customers.add(cust);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return customers;
+    }
+
+    public void addCustomer(Customer cust) {
+        List<Customer> customers = getAllCustomers();
+        for (int i = 0; i < customers.size(); i++) {
+            if (cust.getUsername() == customers.get(i).getUsername()) {
+                //We need to do something here to return back to the webpage an error that the username is taken
+            }
+        }
+
+        try {
+            PreparedStatement st = connection.prepareStatement("INSERT INTO CUSTOMERNOBS(Username, Password,customer_Pref, Payment, Email) VALUES(?,?,?,?,?)");
+
+            st.setString(1, cust.getUsername());
+            st.setString(2, cust.getPassword());
+            st.setString(3, cust.getCustomerPref());
+            st.setString(4, cust.getPayment());
+            st.setString(5, cust.getEmail());
+            st.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCustomer(String username) {
+        try {
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("delete from customernobs where username = " + username);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+        public Customer getCustomerByUsername(String username){
+        Customer cust = new Customer();
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("SELECT * FROM CUSTOMERNOBS WHERE USERNAME = ?");
+            preparedStatement.setString(1, username);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                cust.setUsername(rs.getString("USERNAME"));
+                cust.setPassword(rs.getString("PASSWORD"));
+                cust.setCustomerPref(rs.getString("CUSTOMER_PREF"));
+                cust.setPayment(rs.getString("PAYMENT"));
+                cust.setEmail(rs.getString("EMAIL"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cust;
+    }
     /*
     public List<Film> getProductsByCategory(String )
     {
